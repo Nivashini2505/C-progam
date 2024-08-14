@@ -1,18 +1,24 @@
 #include<stdio.h>
-int findMaxSubArray(int arr[],int size){
-    int currentsum=arr[0];
-    int MaxSum=arr[0];
-    for(int i=1;i<size;i++){
-        currentsum=(currentsum+arr[i]>arr[i])?currentsum+arr[i]:arr[i];
-        MaxSum=(currentsum>MaxSum)?currentsum:MaxSum;
+int findNextGreatestElement(int arr[],int size){
+    int i,j,next;
+  
+    for(i=0;i<size;i++){
+          next=-1;
+          for(j=i+1;j<size;j++){
+            if (arr[j]>arr[i]){
+                next=arr[j];
+                break;
+            }
+        }
+        printf("The next greatest element after %d is %d: \n",arr[i],next);
     }
-    return MaxSum;
 }
+
 int main(){
-    int arr[]={1,4,-3,4,8,3};
+    int arr[]={5,3,10,9,6,13};
     int size=sizeof(arr)/sizeof(arr[0]);
-    int MaxSum=findMaxSubArray(arr,size);
-    printf("The maximum sum of the subarray is:%d\n",MaxSum);
+    printf("Next bigger elements are:\n");
+    int findNextGreatestElement(arr,size);
     return 0;
 }
 
