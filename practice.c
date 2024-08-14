@@ -1,18 +1,18 @@
 #include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+int findMaxSubArray(int arr[],int size){
+    int currentsum=arr[0];
+    int MaxSum=arr[0];
+    for(int i=1;i<size;i++){
+        currentsum=(currentsum+arr[i]>arr[i])?currentsum+arr[i]:arr[i];
+        MaxSum=(currentsum>MaxSum)?currentsum:MaxSum;
+    }
+    return MaxSum;
+}
 int main(){
-    int arr[]={1,2,3,2,3,4,1};
+    int arr[]={1,4,-3,4,8,3};
     int size=sizeof(arr)/sizeof(arr[0]);
-    int OddNumber= findOddNumber(arr,size);
-    printf("The number whixh has odd number of occurances in the given array is:%d\n",OddNumber);
+    int MaxSum=findMaxSubArray(arr,size);
+    printf("The maximum sum of the subarray is:%d\n",MaxSum);
     return 0;
 }
 
-int findOddNumber(int arr[],int size){
-    int result=0;
-    for(int i=0;i<size;i++){
-        result ^=arr[i];
-    }
-    return result;
-}
